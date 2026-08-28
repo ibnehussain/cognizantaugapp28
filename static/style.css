@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a18cd1 100%);
+  background-attachment: fixed;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+}
+
+.dashboard h1 {
+  margin: 0 0 24px;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+#cityInput {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1a1a2e;
+}
+
+#getWeatherBtn,
+#unitToggleBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  background: #1a1a2e;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+#getWeatherBtn:hover,
+#unitToggleBtn:hover {
+  background: #33334d;
+  transform: translateY(-1px);
+}
+
+.results.hidden,
+.error.hidden {
+  display: none;
+}
+
+.current-card {
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.current-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.forecast-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.forecast-day {
+  flex: 1 1 80px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+}
+
+.forecast-day .day-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.error {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 82, 82, 0.25);
+  color: #ffe1e1;
+  font-weight: 500;
+}
