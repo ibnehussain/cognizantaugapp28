@@ -17,7 +17,6 @@ body {
 
 /* Dynamic temperature themes, applied to <body> via JS based on current temperature (°C) */
 body.theme-freezing {
-  background-attachment: fixed;
   background: linear-gradient(135deg, #0f2027 0%, #2c5364 50%, #74ebd5 100%);
 }
 
