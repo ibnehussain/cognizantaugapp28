@@ -65,5 +65,5 @@ It returns JSON containing the resolved city, current conditions, and up to five
 └── static/
     ├── index.html         # Dashboard markup
     ├── script.js          # Client-side behavior
-    └── style.css           # Dashboard styles and themes
+    └── style.css          # Dashboard styles and themes
 ```
