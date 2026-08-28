@@ -60,8 +60,15 @@ function applyTemperatureTheme(celsius) {
       theme = "theme-hot";
     }
   }
-  document.body.classList.remove(...TEMPERATURE_THEMES);
+  const body = document.body;
+  const currentBackground = getComputedStyle(body).getPropertyValue("--theme-background").trim();
+  if (currentBackground) {
+    body.style.setProperty("--base-background", currentBackground);
+  }
+  body.classList.remove(...TEMPERATURE_THEMES, "theme-transition");
   document.body.classList.add(theme);
+  void body.offsetWidth;
+  body.classList.add("theme-transition");
 }
 
 function render(data) {

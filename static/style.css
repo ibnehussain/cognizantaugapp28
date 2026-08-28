@@ -10,37 +10,49 @@ body {
   justify-content: center;
   padding: 24px;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a18cd1 100%);
+  background: var(--base-background, linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a18cd1 100%));
   background-attachment: fixed;
-  transition: background 1.2s ease;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--theme-background);
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.theme-transition::before {
+  opacity: 1;
+  transition: opacity 1.2s ease;
 }
 
 /* Dynamic temperature themes, applied to <body> via JS based on current temperature (°C) */
 body.theme-freezing {
-  background: linear-gradient(135deg, #0f2027 0%, #2c5364 50%, #74ebd5 100%);
+  --theme-background: linear-gradient(135deg, #0f2027 0%, #2c5364 50%, #74ebd5 100%);
 }
 
 body.theme-cold {
-  background-attachment: fixed;
-  background: linear-gradient(135deg, #396afc 0%, #2948ff 50%, #74ebd5 100%);
+  --theme-background: linear-gradient(135deg, #396afc 0%, #2948ff 50%, #74ebd5 100%);
 }
 
 body.theme-mild {
-  background-attachment: fixed;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a18cd1 100%);
+  --theme-background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #a18cd1 100%);
 }
 
 body.theme-warm {
-  background-attachment: fixed;
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #ff9a8b 100%);
+  --theme-background: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #ff9a8b 100%);
 }
 
 body.theme-hot {
-  background-attachment: fixed;
-  background: linear-gradient(135deg, #ff512f 0%, #dd2476 50%, #f96d00 100%);
+  --theme-background: linear-gradient(135deg, #ff512f 0%, #dd2476 50%, #f96d00 100%);
 }
 
 .dashboard {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 480px;
   padding: 32px;
