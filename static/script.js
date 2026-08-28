@@ -43,11 +43,40 @@ async function fetchWeather(city) {
   }
 }
 
+const TEMPERATURE_THEMES = ["theme-freezing", "theme-cold", "theme-mild", "theme-warm", "theme-hot"];
+
+function applyTemperatureTheme(celsius) {
+  let theme = "theme-mild";
+  if (typeof celsius === "number") {
+    if (celsius < 0) {
+      theme = "theme-freezing";
+    } else if (celsius < 15) {
+      theme = "theme-cold";
+    } else if (celsius < 25) {
+      theme = "theme-mild";
+    } else if (celsius < 32) {
+      theme = "theme-warm";
+    } else {
+      theme = "theme-hot";
+    }
+  }
+  const body = document.body;
+  const currentBackground = getComputedStyle(body).getPropertyValue("--theme-background").trim();
+  if (currentBackground) {
+    body.style.setProperty("--base-background", currentBackground);
+  }
+  body.classList.remove(...TEMPERATURE_THEMES, "theme-transition");
+  body.classList.add(theme);
+  void body.offsetWidth;
+  body.classList.add("theme-transition");
+}
+
 function render(data) {
   cityNameEl.textContent = `${data.city}, ${data.country}`;
   tempEl.textContent = formatTemp(data.current.temp, unit);
   descriptionEl.textContent = data.current.description;
   windEl.textContent = `Wind: ${data.current.windspeed} km/h`;
+  applyTemperatureTheme(data.current.temp);
 
   forecastStripEl.innerHTML = "";
   data.daily.forEach((day) => {
