@@ -66,7 +66,7 @@ function applyTemperatureTheme(celsius) {
     body.style.setProperty("--base-background", currentBackground);
   }
   body.classList.remove(...TEMPERATURE_THEMES, "theme-transition");
-  document.body.classList.add(theme);
+  body.classList.add(theme);
   void body.offsetWidth;
   body.classList.add("theme-transition");
 }
